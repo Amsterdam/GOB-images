@@ -9,6 +9,9 @@ RUN apt-get update && apt-get install -y libgdal-dev
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
+# Recent pip.
+RUN pip install pip --upgrade
+
 # Install GDAL separately from the rest of the Python requirements.
 # This avoids that changes to requirements.txt incure a time consuming GDAL build.
 RUN LIBGDAL_VERSION=$(gdal-config --version) && pip install GDAL==${LIBGDAL_VERSION}
