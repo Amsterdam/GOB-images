@@ -10,7 +10,7 @@ ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
 # Recent pip.
-RUN pip install pip --upgrade
+RUN pip install --upgrade pip
 
 # Install GDAL separately from the rest of the Python requirements.
 # This avoids that changes to requirements.txt incure a time consuming GDAL build.
