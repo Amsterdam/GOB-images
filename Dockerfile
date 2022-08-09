@@ -2,8 +2,11 @@ FROM amsterdam/python:3.9-buster
 MAINTAINER datapunt@amsterdam.nl
 
 
-# Install GDAL development files.
-RUN apt-get update && apt-get install -y libgdal-dev
+# SQL Server driver package source.
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
+# Install GDAL development files and SQL Server driver.
+RUN apt-get update && ACCEPT_EULA=Y apt-get install -y libgdal-dev msodbcsql17
 
 # Update C env vars so compiler can find GDAL development files.
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
