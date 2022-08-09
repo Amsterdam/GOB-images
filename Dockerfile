@@ -13,5 +13,5 @@ ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
-# Recent pip.
-RUN pip install --upgrade pip
+# Recent pip and wheel.
+RUN pip install --upgrade pip wheel
