@@ -1,12 +1,7 @@
 # GOB Docker images
 
-# GOB Base image
-
-* Python 3.9
-* Microsoft [ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) (`msodbcsql17`)
-* Oracle [ODPI-C Driver](https://oracle.github.io/odpi/) (Oracle Instant Client)
-
 ## Docker links
 
+* [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 * [Build images with BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/)
 * [Docker Best Practices for Python Developers](https://testdriven.io/blog/docker-best-practices/)
