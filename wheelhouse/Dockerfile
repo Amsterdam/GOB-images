@@ -11,7 +11,7 @@ ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
 # Recent pip and wheel.
-RUN pip install --upgrade pip wheel
+RUN pip install --upgrade --no-cache-dir pip wheel
 
 
 # Wheelhouse directory.

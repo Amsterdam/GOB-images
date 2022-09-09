@@ -28,4 +28,4 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
 # Recent pip and wheel.
-RUN pip install --upgrade pip wheel
+RUN pip install --upgrade --no-cache-dir pip wheel
