@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y libgdal-dev
 ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
 ENV C_INCLUDE_PATH=/usr/include/gdal
 
+# Work around (setuptools<58) for GDAL 2.4.0 (error in GDAL setup command: use_2to3 is invalid).
+RUN pip install --no-cache-dir setuptools==57.5.0
+
 # Recent pip and wheel.
 RUN pip install --upgrade --no-cache-dir pip wheel
 
