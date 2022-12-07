@@ -6,11 +6,36 @@ export DOCKER_HUB_USER=datapunt
 gob_build () {
   DOCKER_NAME=$1
   DOCKER_PATH=$2
-  DOCKER_TAG="${3:-3.9-buster}"
-  docker build --build-arg BUILDKIT_INLINE_CACHE=1 --pull --tag amsterdam/${DOCKER_NAME}:${DOCKER_TAG} ${DOCKER_PATH}
-  docker push amsterdam/${DOCKER_NAME}:${DOCKER_TAG}
+  # Docker tags (and file).
+  if [ -z "${3}" ]; then
+    # Current default.
+    DOCKER_TAGS="3.9-buster"
+    DOCKER_ARGS="--tag amsterdam/${DOCKER_NAME}:3.9-buster"
+  else
+    DOCKER_TAGS=""
+    for tag in ${@: 2-$#}
+    do
+      # First tag determines Dockerfile.
+      if [ -z "${DOCKER_TAGS}" ]; then
+        DOCKER_TAGS="${tag}"
+        DOCKER_ARGS="--file Dockerfile.${tag} --tag amsterdam/${DOCKER_NAME}:${tag}"
+      else
+        DOCKER_TAGS="${DOCKER_TAGS} ${tag}"
+        DOCKER_ARGS="${DOCKER_ARGS} --tag amsterdam/${DOCKER_NAME}:${tag}"
+      fi
+    done
+  fi
+  docker build --build-arg BUILDKIT_INLINE_CACHE=1 --pull ${DOCKER_ARGS} ${DOCKER_PATH}
+  #
+  # Push Docker image for each tags.
+  for tag in ${DOCKER_TAGS}
+  do
+    docker push amsterdam/${DOCKER_NAME}:${tag}
+  done
+  echo
 }
 
+# Login to Docker Hub.
 docker login -u ${DOCKER_HUB_USER} -p ${DOCKER_HUB_PASSWORD}
 
 # GOB Base.
