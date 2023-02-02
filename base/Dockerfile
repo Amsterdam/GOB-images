@@ -27,5 +27,5 @@ ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
-# Recent pip and wheel.
-RUN pip install --upgrade --no-cache-dir pip wheel
+# Recent pip, setuptools and wheel.
+RUN pip install --upgrade --no-cache-dir pip setuptools wheel
