@@ -9,8 +9,8 @@ gob_build () {
   # Docker tags (and file).
   if [ -z "${3}" ]; then
     # Current default.
-    DOCKER_TAGS="3.9-buster"
-    DOCKER_ARGS="--tag amsterdam/${DOCKER_NAME}:3.9-buster"
+    DOCKER_TAGS="3.9-bullseye"
+    DOCKER_ARGS="--tag amsterdam/${DOCKER_NAME}:3.9-bullseye"
   else
     DOCKER_TAGS=""
     for tag in ${@: 2-$#}

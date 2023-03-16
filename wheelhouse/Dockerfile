@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM amsterdam/python:3.9-buster
+FROM amsterdam/python:3.9-bullseye
 MAINTAINER datapunt@amsterdam.nl
 
 
