@@ -1,13 +1,12 @@
 # syntax=docker/dockerfile:1
-FROM amsterdam/python:3.9-buster
+FROM amsterdam/python:3.9-bullseye
 MAINTAINER datapunt@amsterdam.nl
-
 
 # SQL Server driver package source.
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN curl https://packages.microsoft.com/config/debian/9/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN curl https://packages.microsoft.com/config/debian/11/prod.list > /etc/apt/sources.list.d/mssql-release.list
 # Install Microsoft ODBC Driver for SQL Server, locales and gdal-config.
-RUN apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17 locales locales-all libgdal-dev
+RUN apt-get update && ACCEPT_EULA=Y apt-get install -y locales locales-all libgdal-dev msodbcsql18
 
 WORKDIR /app
 
