@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 export DOCKER_BUILDKIT=1
 export DOCKER_HUB_USER=datapunt
 
@@ -12,18 +10,9 @@ gob_build () {
     DOCKER_TAGS="3.9-bullseye"
     DOCKER_ARGS="--tag amsterdam/${DOCKER_NAME}:3.9-bullseye"
   else
-    DOCKER_TAGS=""
-    for tag in ${@: 2-$#}
-    do
-      # First tag determines Dockerfile.
-      if [ -z "${DOCKER_TAGS}" ]; then
-        DOCKER_TAGS="${tag}"
-        DOCKER_ARGS="--file Dockerfile.${tag} --tag amsterdam/${DOCKER_NAME}:${tag}"
-      else
-        DOCKER_TAGS="${DOCKER_TAGS} ${tag}"
-        DOCKER_ARGS="${DOCKER_ARGS} --tag amsterdam/${DOCKER_NAME}:${tag}"
-      fi
-    done
+    DOCKER_TAGS="$3"
+    # First tag determines Dockerfile.
+    DOCKER_ARGS="--file ${DOCKER_PATH}/Dockerfile.${3} --tag amsterdam/${DOCKER_NAME}:${3}"
   fi
   docker build --build-arg BUILDKIT_INLINE_CACHE=1 --pull ${DOCKER_ARGS} ${DOCKER_PATH}
   #
@@ -43,3 +32,4 @@ gob_build gob_baseimage base
 
 # GOB wheelhouse.
 gob_build gob_wheelhouse wheelhouse
+gob_build gob_wheelhouse wheelhouse "3.10-bullseye"
