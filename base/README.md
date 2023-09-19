@@ -1,7 +1,7 @@
 # GOB Base image
 
 ## DB drivers
-* Microsoft [ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) (`msodbcsql17`)
+* Microsoft [ODBC Driver for SQL Server](https://docs.microsoft.com/en-us/sql/connect/odbc/microsoft-odbc-driver-for-sql-server) (`msodbcsql18`)
 * Oracle [ODPI-C Driver](https://oracle.github.io/odpi/) (Oracle Instant Client)
 
 ## Other
@@ -11,6 +11,6 @@
 * Linux kernel AIO library (`libaio1`)
 * Transitional package for HTTPS support (`apt-transport-https`)
 
-## 3.9-buster
-* Buster (`amsterdam/python:3.9-buster`)
-* Python 3.9.6
+## 3.9-bullseye
+* Bullseye (`amsterdam/python:3.9-bullseye`)
+* Python 3.9.15

@@ -1,8 +1,8 @@
 # wheelhouse
 
-## Buster
+## Bullseye
 
-* Python 3.9 (`amsterdam/python:3.9-buster`)
+* Python 3.9 (`python:3.9-slim-bullseye`)
 * wheels (`/opt/wheelhouse`)
 
 ## Usage
@@ -10,12 +10,12 @@
 Copy wheels from the wheelhouse, run `pip install --find-links /opt/wheelhouse` and delete the wheelhouse directory.
 
 ```dockerfile
-FROM amsterdam/wheelhouse:buster as wheelhouse
+FROM amsterdam/gob_wheelhouse:3.9-bullseye as wheelhouse
 MAINTAINER datapunt@amsterdam.nl
 
 
 # Application stage.
-FROM amsterdam/python:3.9-buster as application
+FROM amsterdam/python:3.9-bullseye as application
 MAINTAINER datapunt@amsterdam.nl
 
 # Install GDAL development files.
