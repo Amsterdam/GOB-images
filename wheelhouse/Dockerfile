@@ -1,21 +1,15 @@
 # syntax=docker/dockerfile:1
-FROM amsterdam/python:3.9-bullseye
-MAINTAINER datapunt@amsterdam.nl
+FROM python:3.9-slim-bullseye
 
 
-# Install GDAL development files.
-RUN apt-get update && apt-get install -y libgdal-dev
+# Install GDAL development files and build packages.
+RUN apt-get update && apt-get install -y git libgdal-dev build-essential
 
-# Update C env vars so compiler can find GDAL development files.
-ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
-ENV C_INCLUDE_PATH=/usr/include/gdal
-
-# Work around (setuptools<58) for GDAL 2.4.0 (error in GDAL setup command: use_2to3 is invalid).
+# Work around (setuptools<58) for GDAL 3.2.2 (error in GDAL setup command: use_2to3 is invalid).
 RUN pip install --no-cache-dir setuptools==57.5.0
 
 # Recent pip and wheel.
 RUN pip install --upgrade --no-cache-dir pip wheel
-
 
 # Wheelhouse directory.
 WORKDIR /opt/wheelhouse
