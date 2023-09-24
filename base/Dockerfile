@@ -14,8 +14,8 @@ WORKDIR /app
 COPY drivers drivers
 ENV ORACLE_DIR=/opt/oracle
 RUN mkdir -p ${ORACLE_DIR}
-RUN unzip drivers/instantclient-basiclite-linux.x64-21.10.0.0.0dbru.zip -d ${ORACLE_DIR}
-ENV LD_LIBRARY_PATH=${ORACLE_DIR}/instantclient_21_10:$LD_LIBRARY_PATH
+RUN unzip drivers/instantclient-basiclite-linux.x64-21.11.0.0.0dbru.zip -d ${ORACLE_DIR}
+ENV LD_LIBRARY_PATH=${ORACLE_DIR}/instantclient_21_11:$LD_LIBRARY_PATH
 # Install Linux kernel AIO library, ODBC development files, transitional package for HTTPS support.
 RUN apt-get -y --no-install-recommends install libaio1 unixodbc-dev apt-transport-https
 # Cleanup drivers.
