@@ -14,3 +14,7 @@
 ## 3.9-bullseye
 * Bullseye (`amsterdam/python:3.9-bullseye`)
 * Python 3.9.15
+
+## 3.9-slim-bullseye
+* Bullseye (`python:3.9-slim-bullseye`)
+* Latest Python 3.9.x
