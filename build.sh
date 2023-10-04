@@ -39,3 +39,4 @@ gob_build gob_wheelhouse wheelhouse "3.10-bullseye" "3.10-slim-bullseye"
 
 # GOB Base.
 gob_build gob_baseimage base
+gob_build gob_baseimage base "3.9-slim-bullseye"
