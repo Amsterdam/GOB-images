@@ -42,7 +42,8 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
 # Recent pip, setuptools, wheel and uwsgi.
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONUNBUFFERED=1 \
+    REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 RUN pip install --upgrade --no-cache-dir pip setuptools wheel uwsgi
 
 # datapunt user
