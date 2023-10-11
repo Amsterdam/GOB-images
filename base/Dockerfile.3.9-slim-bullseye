@@ -41,6 +41,11 @@ ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
+# Update Certificate authority (Motiv proxy).
+COPY ca/* /usr/local/share/ca-certificates/extras/
+RUN chmod 644 /usr/local/share/ca-certificates/extras/* \
+    && update-ca-certificates
+
 # Recent pip, setuptools, wheel and uwsgi.
 ENV PYTHONUNBUFFERED=1 \
     REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
