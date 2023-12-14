@@ -2,7 +2,8 @@ FROM postgres:12
 
 RUN apt-get update \
 	&& apt-get install -y postgresql-12-postgis-3 openssh-client wget \
-	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/* \
+    && apt-get autoremove -y
 
 RUN echo 'max_wal_size = 2GB' >> "/usr/share/postgresql/$PG_MAJOR/postgresql.conf.sample"
 RUN echo 'shared_buffers = 2GB' >> "/usr/share/postgresql/$PG_MAJOR/postgresql.conf.sample"
